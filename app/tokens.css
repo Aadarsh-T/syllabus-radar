@@ -1,0 +1,75 @@
+:root {
+  color-scheme: light;
+  --space-3xs: 2px; --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px; --space-4xl: 144px;
+  --text-xs: 0.75rem; --text-sm: 0.875rem; --text-md: 1rem; --text-lg: 1.2rem; --text-xl: 1.44rem; --text-2xl: 1.728rem; --text-3xl: 2.074rem;
+  --text-display-s: 1.44rem; --text-display: 1.728rem; --text-section: 1.2rem; --text-title: 1rem; --text-lead: 1rem;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-in: cubic-bezier(0.7, 0, 0.84, 0); --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
+  --color-error: oklch(52% 0.19 27); --color-success: oklch(50% 0.12 150);
+  --container: 1440px; --gutter: 64px; --gap-columns: 32px; --section-gap-s: 120px; --section-gap: 144px; --section-gap-l: 176px;
+  --z-base: 1; --z-raised: 10; --z-dropdown: 100; --z-sticky: 200; --z-sticky-nav: 300; --z-modal: 400; --z-toast: 500; --z-tooltip: 600;
+  --color-paper: oklch(74% 0.008 80); --color-paper-2: oklch(69% 0.009 80); --color-paper-3: oklch(64% 0.01 80);
+  --color-plate: oklch(82% 0.007 80); --color-plate-ink: oklch(95% 0.006 80);
+  --color-ink: oklch(18% 0.005 270); --color-ink-2: oklch(28% 0.006 80); --color-muted: oklch(31.5% 0.008 80);
+  --color-rule: oklch(64% 0.01 80);
+  --color-accent: oklch(66% 0.21 38); --color-accent-ink: oklch(18% 0.005 270); --color-focus: oklch(42% 0.15 38);
+  --color-accent-deep: oklch(48% 0.17 38);
+  --texture-opacity: 0.05;
+  /* offline build: no web fonts are fetched. Oswald and Archivo are used only if installed; otherwise the
+     closest condensed grotesk the OS ships (Bahnschrift on Windows, Avenir Next Condensed on Apple, Roboto Condensed on Android). */
+  --font-display: "Oswald", "Bahnschrift Condensed", "Bahnschrift", "Avenir Next Condensed", "Roboto Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-outlier: "Archivo Narrow", "Bahnschrift SemiCondensed", "Bahnschrift", "Avenir Next Condensed", "Roboto Condensed", "Arial Narrow", system-ui, sans-serif;
+  --radius-card: 0; --radius-pill: 0; --rule-hair: 1px; --rule-bar: 3px;
+  --shadow-card: 6px 6px 0 var(--color-ink);
+  --tracking-display: -0.005em; --display-weight: 700;
+}
+
+/* Syllabus Radar: the board's ramp and the review states, cast pour */
+:root {
+  --heat-0: oklch(76% 0.008 80); --heat-1: oklch(62% 0.01 80); --heat-2: oklch(48% 0.01 80); --heat-3: oklch(36% 0.008 80); --heat-4: oklch(22% 0.006 80);
+  --heat-ink-0: oklch(31.5% 0.008 80); --heat-ink-1: oklch(18% 0.005 270); --heat-ink-2: oklch(95% 0.006 80); --heat-ink-3: oklch(95% 0.006 80); --heat-ink-4: oklch(95% 0.006 80);
+  --color-high: oklch(33% 0.09 150); --color-med-bg: oklch(64% 0.01 80); --color-low-bg: oklch(44% 0.17 27); --color-low-ink: oklch(95% 0.006 80);
+  --color-danger: oklch(34% 0.15 27);
+  --color-band: oklch(18% 0.005 270); --color-band-ink: oklch(95% 0.006 80); --color-band-focus: oklch(66% 0.21 38);
+  --shadow-press: inset 0 2px 3px oklch(18% 0.005 270 / 0.3);
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 9 -4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+/* night pour: re-derived, hue held at 80, shadows off, elevation by lightness */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --color-paper: oklch(19% 0.008 80); --color-paper-2: oklch(22% 0.009 80); --color-paper-3: oklch(30% 0.01 80);
+    --color-plate: oklch(24% 0.009 80); --color-plate-ink: oklch(93% 0.006 80);
+    --color-ink: oklch(93% 0.006 80); --color-ink-2: oklch(86% 0.007 80); --color-muted: oklch(76% 0.008 80);
+    --color-rule: oklch(34% 0.01 80);
+    --color-accent: oklch(70% 0.18 40); --color-accent-ink: oklch(18% 0.006 80); --color-focus: oklch(72% 0.17 40);
+    --color-accent-deep: oklch(54% 0.15 40);
+    --shadow-card: inset 0 0 0 1px oklch(34% 0.01 80);
+    --heat-0: oklch(28% 0.009 80); --heat-1: oklch(38% 0.01 80); --heat-2: oklch(50% 0.01 80); --heat-3: oklch(66% 0.01 80); --heat-4: oklch(84% 0.008 80);
+    --heat-ink-0: oklch(76% 0.008 80); --heat-ink-1: oklch(93% 0.006 80); --heat-ink-2: oklch(96% 0.005 80); --heat-ink-3: oklch(17% 0.006 80); --heat-ink-4: oklch(17% 0.006 80);
+    --color-high: oklch(80% 0.12 150); --color-med-bg: oklch(34% 0.01 80); --color-low-bg: oklch(52% 0.16 27); --color-low-ink: oklch(97% 0.005 80);
+    --color-danger: oklch(78% 0.12 27);
+    --color-band: oklch(27% 0.01 80); --color-band-ink: oklch(93% 0.006 80); --color-band-focus: oklch(72% 0.17 40);
+    --shadow-press: inset 0 2px 3px oklch(10% 0.006 80 / 0.5);
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 9 -4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"); --grain-blend: screen;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-paper: oklch(19% 0.008 80); --color-paper-2: oklch(22% 0.009 80); --color-paper-3: oklch(30% 0.01 80);
+  --color-plate: oklch(24% 0.009 80); --color-plate-ink: oklch(93% 0.006 80);
+  --color-ink: oklch(93% 0.006 80); --color-ink-2: oklch(86% 0.007 80); --color-muted: oklch(76% 0.008 80);
+  --color-rule: oklch(34% 0.01 80);
+  --color-accent: oklch(70% 0.18 40); --color-accent-ink: oklch(18% 0.006 80); --color-focus: oklch(72% 0.17 40);
+  --color-accent-deep: oklch(54% 0.15 40);
+  --shadow-card: inset 0 0 0 1px oklch(34% 0.01 80);
+  --heat-0: oklch(28% 0.009 80); --heat-1: oklch(38% 0.01 80); --heat-2: oklch(50% 0.01 80); --heat-3: oklch(66% 0.01 80); --heat-4: oklch(84% 0.008 80);
+  --heat-ink-0: oklch(76% 0.008 80); --heat-ink-1: oklch(93% 0.006 80); --heat-ink-2: oklch(96% 0.005 80); --heat-ink-3: oklch(17% 0.006 80); --heat-ink-4: oklch(17% 0.006 80);
+  --color-high: oklch(80% 0.12 150); --color-med-bg: oklch(34% 0.01 80); --color-low-bg: oklch(52% 0.16 27); --color-low-ink: oklch(97% 0.005 80);
+  --color-danger: oklch(78% 0.12 27);
+  --color-band: oklch(27% 0.01 80); --color-band-ink: oklch(93% 0.006 80); --color-band-focus: oklch(72% 0.17 40);
+  --shadow-press: inset 0 2px 3px oklch(10% 0.006 80 / 0.5);
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 9 -4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"); --grain-blend: screen;
+}
