@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Syllabus Radar</title>
+<meta name="description" content="Paste your syllabi, see your whole semester's workload by week, spot crunch weeks early, and export deadlines to your calendar. Runs entirely in your browser.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%231d4ed8'/%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='white' stroke-width='2'/%3E%3Cpath d='M16 16 L27 9' stroke='white' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <h1><span class="logo" aria-hidden="true"></span>Syllabus Radar</h1>
+    <p class="tag">Paste your syllabi. See the whole semester. Spot crunch weeks before they hit.</p>
+    <p class="privacy">Everything runs in your browser. Nothing is uploaded; data is saved only on this device.</p>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section aria-labelledby="s1" class="card">
+    <h2 id="s1"><span class="step">1</span> Add your syllabi</h2>
+    <div class="row">
+      <label for="termStart">First day of classes <span class="hint">(used for "Week 5" style dates)</span></label>
+      <input type="date" id="termStart" required>
+    </div>
+    <div class="row">
+      <label for="courseName">Course name</label>
+      <input type="text" id="courseName" placeholder="e.g. PHYS 1151 Physics for Engineers" autocomplete="off">
+    </div>
+    <div class="row">
+      <label for="syllabusText">Syllabus text <span class="hint">(paste the schedule or the whole document)</span></label>
+      <textarea id="syllabusText" rows="9" placeholder="Sep 12 - Homework 1 due&#10;10/03 Midterm exam&#10;Week 7 Friday: Project 1 due"></textarea>
+    </div>
+    <div class="actions">
+      <button type="button" id="addBtn" class="primary">Find dates</button>
+      <button type="button" id="sampleBtn">Try 3 sample syllabi</button>
+    </div>
+    <ul id="courseList" class="chips" aria-label="Added courses"></ul>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+  </section>
+
+  <section aria-labelledby="s2" class="card" id="radarCard" hidden>
+    <h2 id="s2"><span class="step">2</span> Semester radar</h2>
+    <p class="muted">Workload score per week: exam 5, project 4, quiz 2, homework 2, reading 1. Darker means heavier. Outlined weeks are crunch weeks.</p>
+    <div class="heat-scroll" tabindex="0" role="region" aria-label="Workload heatmap, scrollable">
+      <table class="heat" id="heat"></table>
+    </div>
+    <div class="legend" aria-hidden="true">
+      <span>Light</span><i class="l0"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i><span>Heavy</span>
+      <span class="crunch-key">Crunch week</span>
+    </div>
+    <div class="grid2">
+      <div>
+        <h3>Crunch weeks</h3>
+        <ol id="crunchList" class="plain"></ol>
+      </div>
+      <div>
+        <h3>Start early</h3>
+        <p class="muted small">Suggested start dates: projects 14 days ahead, exams 7 days ahead.</p>
+        <ol id="startList" class="plain"></ol>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="s3" class="card" id="reviewCard" hidden>
+    <h2 id="s3"><span class="step">3</span> Review the dates</h2>
+    <p class="muted">The parser marks each item: <span class="conf high">high</span> explicit date, <span class="conf medium">medium</span> week + weekday or unclear type, <span class="conf low">low</span> guessed from a week number. Fix anything that looks wrong; changes update the radar.</p>
+    <div class="actions">
+      <label class="check"><input type="checkbox" id="onlyReview"> Show only items that need review</label>
+      <button type="button" id="addRowBtn">Add item</button>
+    </div>
+    <div class="table-scroll">
+      <table class="review" id="review">
+        <caption class="sr-only">Extracted deadlines, editable</caption>
+        <thead><tr><th scope="col">Date</th><th scope="col">Course</th><th scope="col">Item</th><th scope="col">Type</th><th scope="col">Check</th><th scope="col"><span class="sr-only">Delete</span></th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="s4" class="card" id="exportCard" hidden>
+    <h2 id="s4"><span class="step">4</span> Export</h2>
+    <label class="check"><input type="checkbox" id="startReminders" checked> Also add "start" events for projects and exams</label>
+    <div class="actions">
+      <button type="button" id="icsBtn" class="primary">Download calendar (.ics)</button>
+      <button type="button" id="csvBtn">Download spreadsheet (.csv)</button>
+      <button type="button" id="clearBtn" class="danger">Clear all data</button>
+    </div>
+    <p class="muted small">The .ics file imports into Google Calendar, Apple Calendar and Outlook as all-day events.</p>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p>Syllabus Radar &middot; MIT License &middot; Built for LaunchPad Hacks 2026 with AI coding assistance from Claude (Anthropic). Sample syllabi are fictional.</p>
+</footer>
+<script src="parser.js"></script>
+<script src="samples.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
